@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>You have</p>
+        <p id="counter"></p>
+        <p>left!</p>
+    </div>
+   
+</body>
+</html>
+
+<script>
+//  I want to set 15 min (900sec) to count up from current time
+ 
+const counter = document.getElementById('counter');
+const startDate = new Date();
+
+const clock = setInterval(function () {
+    const endDate = new Date () + 900 * 1000;
+    const result = ((endDate - startDate)  * 1000);
+    
+    if (result > 900) {
+        clearInterval(clock);
+        counter.innerHTML = 'Time is over!'
+    } else {
+         
+    // const year =  Math.floor(result ) 
+    const months =  Math.floor(result.getMonth() / 30 / 24 / 60 / 60 / 1000);  
+    const days = Math.floor(result.getDays() / 24 / 60 / 60 / 1000);
+    const hours = Math.floor(result.getHours() / 60 / 60 / 1000);
+    const minutes = Math.floor(result.getMinutes() / 60 / 1000);
+    const seconds = Math.floor(result.getSecondes() / 1000);
+    counter.innerHTML = ` ${months}m, ${days}d, ${hours}h, ${minutes}m, ${seconds}s,`;
+    }
+     
+
+    
+}, 100)
+
+// console.log();
+
+</script>
